@@ -1,10 +1,12 @@
 package org.imannuel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class PSBB {
 
-    public Integer psbb(String numberOfFamily, String membersOfFamily) {
+    public static Integer psbb(String numberOfFamily, String membersOfFamily) {
         //parse string numberOfFamily to integer
         int familyNumber = Integer.parseInt(numberOfFamily);
 
@@ -21,12 +23,44 @@ public class PSBB {
             return -1;
         }
 
-        //sum total of family members
-        int sumOfFamilyMembers = Arrays.stream(familyMembers).sum();
+        //initialize variable to save result
+        int busNeeded = 0;
 
-        //divide it the sum of family member with 4(limit of passenger in one car)
-        //cast to double because value of divide may be not decimal
-        //use ceil to round it
-        return (int) Math.ceil((double) sumOfFamilyMembers / 4);
+        //initialize list to save when there is more than four in one family
+        ArrayList<Integer> remainingFamily = new ArrayList<>();
+
+        //find number of family member is 4
+        for (int members : familyMembers) {
+            if(members==4){
+                //add bus needed
+                busNeeded++;
+            }else{
+                //save members to remaining family
+                remainingFamily.add(members);
+            }
+        }
+
+        //sort family
+        Collections.sort(remainingFamily);
+
+        int firstPointer = 0;
+        int lastPointer = remainingFamily.size()-1;
+
+        //loop through remaining family
+        while (firstPointer <= lastPointer) {
+            //add bus needed if most small family member and most big family member can in one bus
+            if (remainingFamily.get(firstPointer) + remainingFamily.get(lastPointer) <= 4) {
+                busNeeded++;
+                firstPointer++;
+                lastPointer--;
+            } else {
+                //add bus needed because members too large
+                busNeeded++;
+                lastPointer--;
+            }
+        }
+
+        return busNeeded;
     }
+
 }
