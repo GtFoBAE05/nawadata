@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class PSBB {
 
-    public static Integer psbb(String numberOfFamily, String membersOfFamily) {
+    public Integer psbb(String numberOfFamily, String membersOfFamily) {
         //parse string numberOfFamily to integer
         int familyNumber = Integer.parseInt(numberOfFamily);
 
@@ -39,7 +39,7 @@ public class PSBB {
                 //loop if current family members if more than four
                 int tempMember = members;
                 while (tempMember > 0) {
-                    if (tempMember - 4 > 0) {
+                    if (tempMember - 4 >= 0) {
                         tempMember = tempMember - 4;
                         busNeeded++;
                     } else {
@@ -72,7 +72,6 @@ public class PSBB {
                 lastPointer--;
             }
         }
-
         return busNeeded;
     }
 

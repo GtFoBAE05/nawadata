@@ -28,6 +28,17 @@ class PSBBTest {
     }
 
     @Test
+    void shouldReturnEightWhenPSBBWithCustomTestCase(){
+        PSBB psbb = new PSBB();
+        String numberOfFamilies = "5";
+        String membersInFamily = "5 5 5 5 8";
+        Integer expectedOutput = 8;
+
+        Integer result = psbb.psbb(numberOfFamilies, membersInFamily);
+        assertEquals(expectedOutput, result);
+    }
+
+    @Test
     void shouldReturnMinusOneWhenPSBBInvalid(){
         PSBB psbb = new PSBB();
         String numberOfFamilies = "5";

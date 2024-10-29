@@ -16,7 +16,7 @@ public class Main {
             System.out.println("Nawadata logic test");
             System.out.println("1. Sort Character(NDL010) - first approach (using string builder index)");
             System.out.println("2. Sort Character(NDL010) - second approach (using linked hash map)");
-            System.out.println("3. PSBB(NDL011");
+            System.out.println("3. PSBB(NDL011)");
             System.out.println("4. Exit");
             System.out.print("Input the option of the menu: ");
             menuOption = scanner.nextInt();
@@ -48,7 +48,7 @@ public class Main {
                     String numberOfMembersFamily = scanner.nextLine();
                     System.out.println();
                     Integer minimumCarNeeded = psbb.psbb(numberOfFamilies, numberOfMembersFamily);
-                    if(minimumCarNeeded != -1){
+                    if (minimumCarNeeded != -1) {
                         System.out.printf("Minimum bus required is: %d\n", minimumCarNeeded);
                     }
                     break;
