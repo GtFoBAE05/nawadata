@@ -30,11 +30,24 @@ public class PSBB {
         ArrayList<Integer> remainingFamily = new ArrayList<>();
 
         //find number of family member is 4
+        //find number of family member is 4
         for (int members : familyMembers) {
-            if(members==4){
+            if (members == 4) {
                 //add bus needed
                 busNeeded++;
-            }else{
+            } else if (members > 4) {
+                //loop if current family members if more than four
+                int tempMember = members;
+                while (tempMember > 0) {
+                    if (tempMember - 4 > 0) {
+                        tempMember = tempMember - 4;
+                        busNeeded++;
+                    } else {
+                        remainingFamily.add(tempMember);
+                        tempMember = 0;
+                    }
+                }
+            } else {
                 //save members to remaining family
                 remainingFamily.add(members);
             }
